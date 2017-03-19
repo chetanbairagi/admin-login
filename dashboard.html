@@ -1,0 +1,166 @@
+
+<html>
+<head>
+    <title>Admin panal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css"  href="./style/dashboard.css" />
+    <link rel="stylesheet" href="style/style-Admin-login.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- data tables cdn --------------------->
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src=" https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"></script>
+
+
+
+
+
+<!-- ---------------- rnd tables cdn----------->
+</head>
+<body>
+
+      <!--  ------------- header --->
+<div class="row">
+    <div id="header">
+    <div class="logo">
+      <a href="#">Admin<span>Panal</span></a>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="container">
+    <div class="row">
+          <div class="slidebar ">
+            <ul id="nav">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Boorter Hub</a></li>
+            <li><a href="#">Stresser</a></li>
+            <li><a href="#">Friends</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Pusrchase</a></li>
+          </ul>
+        </div>
+
+      <div class="col-lg-10" >
+        <div class="row">
+          <div class="panel panel-primary">
+            <div class="panel-heading">Table for Basics Info</div>
+                <div class="panel-body" style="background:#ffffff;">
+                  <table id="example" class="table table-striped table-bordered  table-responsive;">
+                  <thead>
+                    <tr>
+                     <th class="site_name">Name</th>
+                     <th>Age </th>
+                     <th>country</th>
+                     <th>city</th>
+                    </tr>
+                  </thead>
+                <tbody>
+              </tbody>
+            </table>
+        </div>
+      </div>
+      </div>
+        <br><br><br>
+
+<!-----------------------------//chart//-------------------------------------------->
+
+          <div class="row">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Number of Users</div>
+              <div class="panel-body"style="background:#ffffff;">
+                <canvas    id="chart" width="300" height="300"></canvas>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+<!-----------------------------//footer//-------------------------------------------->
+<!--<footer   >
+     <div id="main-div" class="container-fluid"  >
+         <div  id="footer-info" class="row "  >
+         		 <div class="col-md-2" >
+  			          <img  src="images/logo.png" style=" margin-right: 15px;margin-top: 15px;" />
+  	         </div>
+           </div>
+    </footer>-->
+    <script>
+    	$.getJSON('http://test.knudge.me/analytics/user_profiles?token=edpokes_panel_123', function(result)
+    </script>
+    <script>
+        $("#example").dataTable({
+        "ServerSide": true,
+        "bProcessing": false,
+        "jQueryUI": true,
+        "sAjaxSource": 'https://api.myjson.com/bins/1gswqd',
+        "aoColumns":
+            [{"mData":"name",}
+            ,{"mData": "age"}
+            ,{"mData": "country"}
+            ,{"mData":"city"}
+            ]});
+      </script>
+<script type="text/javascript" src="http://www.chartjs.org/assets/Chart.js"> </script>
+ <script type="text/javascript">
+    $(document).ready(function(err) {
+       $.getJSON('https://api.myjson.com/bins/1gswqd', function(result) {
+         var wiki=[];
+          var SameAge=[];
+          var SameCountry=[];
+          var count=0;
+          wiki = result.aaData;
+       for(var i=0;i<wiki.length-1;i++)
+          {
+            if(wiki[i].age == wiki[i+1].age && wiki[i].country == wiki[i+1].country)
+            {
+               SameAge.push(wiki[i].age);
+                SameCountry.push( wiki[i].country);
+
+            }
+          }
+            var pieData = [
+              {
+               	value: 400,
+               	color: "#B4B7B9",
+               	highlight: "#f47d42",
+               	label: "Total Users",
+                labelColor : 'white',
+                labelFontSize : '16'
+              },
+              {
+               	value: 380,
+               	color: "#90c653",
+               	highlight: "#f47d42",
+               	label: "country"
+               },
+              ];
+
+
+              pieData[1].value=SameAge.length+1;
+               pieData[1].label=SameCountry[1]+" "+SameAge[1];
+
+                pieData[0].value=SameCountry[0];
+                pieData[0].value=wiki.length;
+                pieData[0].label="Total Users ";
+               	var myPie = new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
+
+              }); //getJSON function
+              }); //document ready function
+ 	</script>
+</body>
+</html>

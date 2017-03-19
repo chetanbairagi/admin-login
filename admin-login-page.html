@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>knudge.me</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style/style-Admin-login.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="JS/Admin-login-js.js"></script>
+
+</head>
+
+
+<body>
+<!---//header//-------------------------------------------->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div id="admin"  class="container-fluid" style="height: 77px;">
+  <h4 style="margin-top: 26px; color:#2B6FAA;">Admin login </h4>
+    <div class="navbar-header">
+      <a class="navbar-brand" >
+      <img  src="images/logo.png" style="width:170px;heigth:80px;border: 0; float: left; margin-right: 15px" /> </a>
+  </div>
+</nav>
+ <!---//End header//-------------------------------------------->
+<style>
+
+</style>
+
+
+<!-- - //main// -------------------------------->
+
+<br><br><br>
+<div id="main-div-conatct-us" class="container-fluid bg-grey"  >
+    <form  method="post" name="login">
+        <div class="raw">
+            <div class="imgcontainer">
+              <img src="images/admin_image.png" alt="Avatar" class="avatar">
+            </div>
+        </div>
+
+      <div class="raw">
+        <div id="user-pass-div" class="arrange-vertically">
+          <label><b></b></label>
+                <input type="text" id="name" class="form-control" placeholder="Name"  name="userid" required style="padding-bottom: 7px;
+                padding-top: 7px;" />
+          <label><b></b></label>
+
+           <input  id="password" class="form-control" name="pswrd"  placeholder="Enter Password" type="password" required style="padding-bottom: 7px;
+           padding-top: 7px;">
+          </div>
+        </div>
+  <div class="raw">
+  <div id="btn-div" >
+  <button id="btn" type="button" onclick="check(this.form)" value="Login">Login</button>
+
+  </div>
+  </div>
+</form>
+</div>
+
+
+<!---//footer//-------------------------------------------->
+<footer   >
+   <div id="main-div" class="container-fluid"  >
+       <div  id="footer-info" class="row "  >
+       		 <div class="col-md-2" >
+			          <img  src="images/logo.png" style="width:170px;heigth:80px;border: 0; float: left; margin-right: 15px;margin-top: 15px;" />
+	         </div>
+         </div>
+    </footer>
+<!-- -//end footer//---------------------------------------------->
+</body>
+</html>
